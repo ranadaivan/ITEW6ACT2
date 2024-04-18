@@ -1,18 +1,15 @@
 <template>
   <div id="app">
+    <header class="title">Product Management</header>
     <div class="container">
-      <h1 class="title">Product Management</h1>
-      <!-- Router links for navigation -->
       <router-link to="/add-product" class="router-link">➕ Add New Product</router-link>
       <router-link to="/product-list" class="router-link">📦 View Product List</router-link>
-      
       <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-// Import the necessary components
 import { mapGetters } from 'vuex';
 
 export default {
@@ -43,6 +40,7 @@ export default {
   font-size: 2rem;
   margin-bottom: 20px;
   color: #333;
+  display: block;
 }
 
 .router-link {

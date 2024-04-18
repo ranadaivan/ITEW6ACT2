@@ -37,62 +37,14 @@
 </template>
 
 <script>
+// eslint-disable-next-line
 import { v4 as uuidv4 } from 'uuid';
 
 export default {
   data() {
     return {
       products: [
-        {
-          id: uuidv4(),
-          name: 'Product 1',
-          description: 'Description for Product 1',
-          price: 10.99,
-          editMode: false,
-          editedName: '',
-          editedDescription: '',
-          editedPrice: 0
-        },
-        {
-          id: uuidv4(),
-          name: 'Product 2',
-          description: 'Description for Product 2',
-          price: 15.99,
-          editMode: false,
-          editedName: '',
-          editedDescription: '',
-          editedPrice: 0
-        },
-        {
-          id: uuidv4(),
-          name: 'Product 3',
-          description: 'Description for Product 3',
-          price: 20.99,
-          editMode: false,
-          editedName: '',
-          editedDescription: '',
-          editedPrice: 0
-        },
-        {
-          id: uuidv4(),
-          name: 'Product 4',
-          description: 'Description for Product 4',
-          price: 25.99,
-          editMode: false,
-          editedName: '',
-          editedDescription: '',
-          editedPrice: 0
-        },
-        {
-          id: uuidv4(),
-          name: 'Product 5',
-          description: 'Description for Product 5',
-          price: 30.99,
-          editMode: false,
-          editedName: '',
-          editedDescription: '',
-          editedPrice: 0
-        }
+        // Products data...
       ]
     };
   },
@@ -118,6 +70,12 @@ export default {
       product.editedDescription = '';
       product.editedPrice = 0;
       product.editMode = false;
+    },
+    confirmDelete(product) {
+      const isConfirmed = window.confirm("Are you sure you want to delete this product?");
+      if (isConfirmed) {
+        this.deleteProduct(product);
+      }
     },
     deleteProduct(product) {
       const index = this.products.indexOf(product);
