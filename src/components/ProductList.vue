@@ -44,10 +44,40 @@ export default {
   data() {
     return {
       products: [
-        // Products data...
+        {
+          id: uuidv4(),
+          name: 'Dummy Product 1',
+          description: 'This is the description for Dummy Product 1',
+          price: 10.99,
+          editMode: false,
+          editedName: '',
+          editedDescription: '',
+          editedPrice: 0
+        },
+        {
+          id: uuidv4(),
+          name: 'Dummy Product 2',
+          description: 'This is the description for Dummy Product 2',
+          price: 19.99,
+          editMode: false,
+          editedName: '',
+          editedDescription: '',
+          editedPrice: 0
+        },
+        {
+          id: uuidv4(),
+          name: 'Dummy Product 3',
+          description: 'This is the description for Dummy Product 3',
+          price: 5.99,
+          editMode: false,
+          editedName: '',
+          editedDescription: '',
+          editedPrice: 0
+        }
       ]
     };
   },
+
   methods: {
     editProduct(product) {
       product.editMode = true;
