@@ -1,30 +1,64 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div id="app">
+    <div class="container">
+      <h1 class="title">Product Management</h1>
+      <!-- Router links for navigation -->
+      <router-link to="/add-product" class="router-link">➕ Add New Product</router-link>
+      <router-link to="/product-list" class="router-link">📦 View Product List</router-link>
+      
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
+
+<script>
+// Import the necessary components
+import { mapGetters } from 'vuex';
+
+export default {
+  name: 'App',
+  computed: {
+    ...mapGetters(['getAllProducts'])
+  }
+};
+</script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
-  color: #2c3e50;
+  color: #333;
 }
 
-nav {
-  padding: 30px;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+.router-link {
+  display: inline-block;
+  margin: 20px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: linear-gradient(to right, #33cc33, #009900);
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+.router-link:hover {
+  background: linear-gradient(to right, #009900, #006600);
+  color: #fff;
 }
 </style>
