@@ -64,52 +64,52 @@ export default {
 
 <style>
 .product-form {
-  background: linear-gradient(to right, #ffecd2, #ffb74d);
+  background: linear-gradient(to right, #ffdaab, #ff9e4d);
   border-radius: 20px;
-  padding: 30px;
+  padding: 40px;
   max-width: 400px;
   margin: 0 auto;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .form-group {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .label {
   font-weight: bold;
-  font-size: 18px;
-  color: #ff3d00;
-  margin-bottom: 12px;
+  font-size: 20px;
+  color: #ff5722;
+  margin-bottom: 16px;
 }
 
 .input {
-  width: calc(100% - 20px);
-  padding: 15px;
-  border: 2px solid #ff3d00;
-  border-radius: 10px;
+  width: calc(100% - 30px);
+  padding: 20px;
+  border: 2px solid #ff5722;
+  border-radius: 12px;
   box-sizing: border-box;
-  color: #ff6f00;
-  font-size: 16px;
+  color: #ff9800;
+  font-size: 18px;
 }
 
 .button {
   width: 100%;
-  padding: 18px;
-  background: linear-gradient(to right, #ffffff, #ff6f00);
-  color: #ff3d00;
+  padding: 22px;
+  background: linear-gradient(to right, #ffffff, #ff9800);
+  color: #ff5722;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   transition: background-color 0.3s;
 }
 
 .button:hover {
-  background: linear-gradient(to right, #ffffff, #ff9500);
+  background: linear-gradient(to right, #ffffff, #ffa726);
 }
 
 .button:active {
-  background: linear-gradient(to right, #ffffff, #ff3d00);
+  background: linear-gradient(to right, #ffffff, #ff5722);
 }
 </style>
