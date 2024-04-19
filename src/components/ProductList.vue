@@ -46,6 +46,8 @@ export default {
     }
   },
   methods: {
+    // to facilitate in place editing, each product element in the array has an attribute pertaining to its editing mode.
+    // once set to true, the editing fields are shown through the modal v-if
     editProduct(product) {
       product.editMode = true;
       // Assign current values to edited fields
