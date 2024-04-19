@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
+
 export default {
   data() {
     return {
@@ -51,7 +53,12 @@ export default {
       this.clearFields();
     },
     showNotification() {
-      // Your notification logic
+      Swal.fire({
+        title: 'Success!',
+        text: 'Product has been added successfully.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
     },
     clearFields() {
       this.name = '';
