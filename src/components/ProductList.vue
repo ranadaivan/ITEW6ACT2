@@ -6,13 +6,13 @@
           <h3 class="product-name">{{ product.name }}</h3>
           <div>
             <button @click="editProduct(product)" class="btn btn-warning btn-sm">✎ Edit</button>
-            <button @click="deleteProduct(product)" class="btn btn-danger btn-sm">🗑️ Delete</button>
+            <button @click="confirmDelete(product)" class="btn btn-danger btn-sm">🗑️ Delete</button> <!-- Modified click event -->
           </div>
         </div>
         <p class="product-description">{{ product.description }}</p>
         <p class="product-price">{{ product.price }}</p>
         <!-- Edit form for each product -->
-        <form v-if="product.editMode" @submit.prevent="confirmUpdate(product)" class="update-form">
+        <form v-if="product.editMode" @submit.prevent="confirmUpdate(product)" class="update-form"> <!-- Added confirmUpdate call on form submit -->
           <div class="form-group">
             <label for="edit-name">Product Name</label>
             <input type="text" v-model="product.editedName" required class="input-field">
@@ -55,6 +55,7 @@ export default {
       product.editedPrice = product.price;
     },
     confirmUpdate(product) {
+      // Confirm update
       Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -75,6 +76,7 @@ export default {
       });
     },
     updateProduct(product) {
+      // Update product
       product.name = product.editedName;
       product.description = product.editedDescription;
       product.price = product.editedPrice;
@@ -89,15 +91,37 @@ export default {
       });
     },
     cancelEdit(product) {
+      // Cancel editing
       product.editMode = false;
     },
+    confirmDelete(product) {
+      // Confirm delete
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.deleteProduct(product);
+          Swal.fire(
+            'Deleted!',
+            'Your product has been deleted.',
+            'success'
+          )
+        }
+      });
+    },
     deleteProduct(product) {
+      // Delete product
       this.$store.dispatch('deleteProduct', product.id);
     }
   }
 };
 </script>
-
 
 <style>
 body {
