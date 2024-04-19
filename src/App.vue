@@ -42,6 +42,8 @@ export default {
   margin-bottom: 20px;
   color: #555;
   display: block;
+  font-weight: bold; /* Make the text bold */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow to the text */
 }
 
 .btn-success {

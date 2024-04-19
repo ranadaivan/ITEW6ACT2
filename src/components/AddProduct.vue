@@ -12,7 +12,7 @@
       <label for="price" class="label">Product Price</label>
       <input type="number" v-model.number="price" placeholder="Enter product price" required min="0" class="form-control">
     </div>
-    <button type="submit" class="btn btn-primary btn-block">Add Product</button>
+    <button type="submit" class="btn btn-primary btn-block">🚀 Add Product</button>
   </form>
 </template>
 
@@ -55,7 +55,7 @@ export default {
     showNotification() {
       Swal.fire({
         icon: 'success',
-        title: 'Product Added Successfully!',
+        title: '🎉 Product Added Successfully!',
         showConfirmButton: false,
         timer: 1500
       });
@@ -82,21 +82,25 @@ export default {
   background-color: #f0f0f0;
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow effect */
 }
 
 .btn-primary {
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: #ff6b6b; /* Vibrant red */
+  border-color: #ff6b6b;
+  font-size: 18px;
+  transition: transform 0.2s ease-in-out;
 }
 
 .btn-primary:hover {
-  background-color: #5a6268;
-  border-color: #545b62;
+  background-color: #ff3e3e; /* Darker red on hover */
+  border-color: #ff3e3e;
+  transform: scale(1.05); /* Scale up on hover */
 }
 
 .btn-primary:active {
-  background-color: #454d55;
-  border-color: #3e444b;
+  background-color: #ff2626; /* Even darker red when active */
+  border-color: #ff2626;
 }
 
 body {
