@@ -27,6 +27,13 @@ export default {
   },
   methods: {
     addProduct() {
+
+      // Price Validation
+      if (parseFloat(this.price) < 0) {
+        window.alert("Invalid Input Error: Price cannot be negative.");
+        return;
+      }
+
       // Create a new product object
       const newProduct = {
         id: Math.random().toString(36).substr(2, 9), // Generate a random id for the new product
