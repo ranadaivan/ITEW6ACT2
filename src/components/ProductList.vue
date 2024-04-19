@@ -6,7 +6,7 @@
           <h3 class="product-name">{{ product.name }}</h3>
           <div>
             <button @click="editProduct(product)" class="btn btn-warning btn-sm">✎ Edit</button>
-            <button @click="deleteProduct(product)" class="btn btn-danger btn-sm">🗑️ Delete</button>
+            <button @click="confirmDeleteProduct(product)" class="btn btn-danger btn-sm">🗑️ Delete</button>
           </div>
         </div>
         <p class="product-description">{{ product.description }}</p>
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
+
 export default {
   computed: {
     products() {
@@ -57,12 +59,35 @@ export default {
       product.description = product.editedDescription;
       product.price = product.editedPrice;
       product.editMode = false;
+
+      // Show SweetAlert2 notification after successfully updating the product
+      Swal.fire({
+        icon: 'success',
+        title: 'Product Updated Successfully!',
+        showConfirmButton: false,
+        timer: 1500
+      });
     },
     cancelEdit(product) {
       product.editedName = '';
       product.editedDescription = '';
       product.editedPrice = 0;
       product.editMode = false;
+    },
+    confirmDeleteProduct(product) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'You won\'t be able to revert this!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.deleteProduct(product);
+        }
+      });
     },
     deleteProduct(product) {
       this.$store.dispatch('deleteProduct', product.id);

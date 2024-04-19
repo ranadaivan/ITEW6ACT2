@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
+
 export default {
   data() {
     return {
@@ -44,14 +46,19 @@ export default {
       // Dispatch action to add the new product to Vuex store
       this.$store.dispatch('addProduct', newProduct);
 
-      // Show notification
+      // Show SweetAlert2 notification
       this.showNotification();
 
       // Clear input fields
       this.clearFields();
     },
     showNotification() {
-      // Your notification logic
+      Swal.fire({
+        icon: 'success',
+        title: 'Product Added Successfully!',
+        showConfirmButton: false,
+        timer: 1500
+      });
     },
     clearFields() {
       this.name = '';
