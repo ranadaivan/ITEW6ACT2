@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div v-if="products.length > 0">
+      <transition-group name="fade">
       <div v-for="product in products" :key="product.id" class="product-item">
         <div class="product-header">
           <h3 class="product-name">{{ product.name }}</h3>
@@ -31,6 +32,7 @@
           </div>
         </form>
       </div>
+    </transition-group>
     </div>
     <div v-else>
       <p>No products added yet.</p>
@@ -126,6 +128,14 @@ export default {
 <style>
 body {
   font-family: 'Roboto', sans-serif;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
 }
 
 .container {
