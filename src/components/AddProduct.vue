@@ -31,7 +31,7 @@ export default {
     addProduct() {
       // Price Validation
       if (parseFloat(this.price) < 0) {
-        window.alert("Invalid Input Error: Price cannot be negative.");
+        window.alert("Invalid Input Error: Price should always be greater than zero.");
         return;
       }
 
