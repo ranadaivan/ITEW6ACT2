@@ -4,7 +4,10 @@
       <div v-for="product in products" :key="product.id" class="product-item">
         <div class="product-header">
           <h3 class="product-name">{{ product.name }}</h3>
-          <button @click="editProduct(product)" class="edit-button">✎ Edit</button>
+          <div>
+            <button @click="editProduct(product)" class="edit-button">✎ Edit</button>
+            <button @click="deleteProduct(product)" class="delete-button">🗑️ Delete</button>
+          </div>
         </div>
         <p class="product-description">{{ product.description }}</p>
         <p class="product-price">{{ product.price }}</p>
@@ -25,7 +28,6 @@
           <div class="buttons-container">
             <button type="submit" class="submit-button">Update</button>
             <button type="button" @click="cancelEdit(product)" class="cancel-button">Cancel</button>
-            <button type="button" @click="deleteProduct(product)" class="delete-button">🗑️ Delete</button>
           </div>
         </form>
       </div>
@@ -65,12 +67,6 @@ export default {
       product.editedDescription = '';
       product.editedPrice = 0;
       product.editMode = false;
-    },
-    confirmDelete(product) {
-      const isConfirmed = window.confirm("Are you sure you want to delete this product?");
-      if (isConfirmed) {
-        this.deleteProduct(product);
-      }
     },
     deleteProduct(product) {
       this.$store.dispatch('deleteProduct', product.id);
