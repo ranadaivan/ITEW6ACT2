@@ -10,7 +10,6 @@
     </div>
     <div class="form-group">
       <label for="price" class="label">Product Price</label>
-      <!-- min="0" to html template input tag in order to natively reject inputs below 0 -->
       <input type="number" v-model.number="price" placeholder="Enter product price" required min="0" class="input">
     </div>
     <button type="submit" class="button">Add Product</button>
@@ -28,7 +27,6 @@ export default {
   },
   methods: {
     addProduct() {
-
       // Price Validation
       if (parseFloat(this.price) < 0) {
         window.alert("Invalid Input Error: Price cannot be negative.");
@@ -37,7 +35,7 @@ export default {
 
       // Create a new product object
       const newProduct = {
-        id: Math.random().toString(36).substr(2, 9), // Generate a random id for the new product
+        id: Math.random().toString(36).substr(2, 9),
         name: this.name,
         description: this.description,
         price: parseInt(this.price)
@@ -66,52 +64,52 @@ export default {
 
 <style>
 .product-form {
-  background: linear-gradient(to right, #e6f7ff, #66ccff);
-  border-radius: 10px;
+  background: linear-gradient(to right, #ffecd2, #ffb74d);
+  border-radius: 20px;
   padding: 30px;
   max-width: 400px;
   margin: 0 auto;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .label {
   font-weight: bold;
-  font-size: 16px;
-  color: #333;
-  margin-bottom: 8px;
+  font-size: 18px;
+  color: #ff3d00;
+  margin-bottom: 12px;
 }
 
 .input {
   width: calc(100% - 20px);
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 15px;
+  border: 2px solid #ff3d00;
+  border-radius: 10px;
   box-sizing: border-box;
-  color: #333;
+  color: #ff6f00;
   font-size: 16px;
 }
 
 .button {
   width: 100%;
-  padding: 15px;
-  background: linear-gradient(to right, #33cc33, #009900);
-  color: white;
+  padding: 18px;
+  background: linear-gradient(to right, #ffffff, #ff6f00);
+  color: #ff3d00;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
   transition: background-color 0.3s;
 }
 
 .button:hover {
-  background: linear-gradient(to right, #009900, #006600);
+  background: linear-gradient(to right, #ffffff, #ff9500);
 }
 
 .button:active {
-  background: linear-gradient(to right, #009900, #004d00);
+  background: linear-gradient(to right, #ffffff, #ff3d00);
 }
 </style>

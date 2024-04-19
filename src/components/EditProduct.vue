@@ -37,26 +37,22 @@ export default {
 .update-form {
   max-width: 400px;
   margin: 0 auto;
-  background-color: #f4f4f4;
+  background-color: #ffecd2;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
-
 .label {
   display: block;
   font-weight: bold;
-  color: #333;
+  color: #ff3d00;
 }
 
 .input-field {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ff6f00;
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -64,8 +60,7 @@ export default {
 .submit-button {
   width: 100%;
   padding: 12px;
-  background: linear-gradient(to right, #33cc33, #009900);
-  color: white;
+  background: linear-gradient(to right, #ffffff, #ff6f00);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -73,10 +68,10 @@ export default {
 }
 
 .submit-button:hover {
-  background: linear-gradient(to right, #009900, #006600);
+  background: linear-gradient(to right, #ffffff, #ff9500);
 }
 
 .submit-button:active {
-  background: linear-gradient(to right, #006600, #003300);
+  background: linear-gradient(to right, #ffffff, #ff3d00);
 }
 </style>

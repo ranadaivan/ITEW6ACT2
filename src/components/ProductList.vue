@@ -46,25 +46,19 @@ export default {
     }
   },
   methods: {
-    // to facilitate in place editing, each product element in the array has an attribute pertaining to its editing mode.
-    // once set to true, the editing fields are shown through the modal v-if
     editProduct(product) {
       product.editMode = true;
-      // Assign current values to edited fields
       product.editedName = product.name;
       product.editedDescription = product.description;
       product.editedPrice = product.price;
     },
     updateProduct(product) {
-      // Update the product with edited values
       product.name = product.editedName;
       product.description = product.editedDescription;
       product.price = product.editedPrice;
-      // Exit edit mode
       product.editMode = false;
     },
     cancelEdit(product) {
-      // Reset edited values and exit edit mode
       product.editedName = '';
       product.editedDescription = '';
       product.editedPrice = 0;
@@ -73,21 +67,18 @@ export default {
     deleteProduct(product) {
       this.$store.dispatch('deleteProduct', product.id);
     }
-  },
-  mounted() {
-    // You can dispatch an action here to fetch products from an API if needed
   }
 };
 </script>
 
 <style>
 .container {
-  background: linear-gradient(to bottom right, #f0f0f0, #d9d9d9);
+  background: linear-gradient(to bottom right, #ffecd2, #ffbf69);
   padding: 20px;
 }
 
 .product-item {
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -103,7 +94,7 @@ export default {
 .product-name {
   font-size: 20px;
   font-weight: bold;
-  color: #333;
+  color: #ff3d00;
 }
 
 .product-description {
@@ -127,8 +118,8 @@ export default {
 .cancel-button,
 .delete-button {
   padding: 10px 16px;
-  background-color: #ff9f00;
-  color: #333;
+  background-color: #ff6f00;
+  color: #ffffff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -141,13 +132,13 @@ export default {
 .submit-button:hover,
 .cancel-button:hover,
 .delete-button:hover {
-  background-color: #ffbf69;
+  background-color: #ff9933;
 }
 
 .edit-button:active,
 .submit-button:active,
 .cancel-button:active,
 .delete-button:active {
-  background-color: #ff9933;
+  background-color: #ff3d00;
 }
 </style>
