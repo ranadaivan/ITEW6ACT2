@@ -152,13 +152,13 @@ export default {
 }
 
 .submit-button {
-  background: #007bff;
+  background: #00b351;
   border: none;
   color: #fff;
 }
 
 .submit-button:hover {
-  background: #0056b3;
+  background: #00b351;
 }
 
 .cancel-button {
