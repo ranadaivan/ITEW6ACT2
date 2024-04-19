@@ -37,47 +37,12 @@
 </template>
 
 <script>
-// eslint-disable-next-line
-import { v4 as uuidv4 } from 'uuid';
-
 export default {
-  data() {
-    return {
-      products: [
-        {
-          id: uuidv4(),
-          name: 'Dummy Product 1',
-          description: 'This is the description for Dummy Product 1',
-          price: 10,
-          editMode: false,
-          editedName: '',
-          editedDescription: '',
-          editedPrice: 0
-        },
-        {
-          id: uuidv4(),
-          name: 'Dummy Product 2',
-          description: 'This is the description for Dummy Product 2',
-          price: 19,
-          editMode: false,
-          editedName: '',
-          editedDescription: '',
-          editedPrice: 0
-        },
-        {
-          id: uuidv4(),
-          name: 'Dummy Product 3',
-          description: 'This is the description for Dummy Product 3',
-          price: 5,
-          editMode: false,
-          editedName: '',
-          editedDescription: '',
-          editedPrice: 0
-        }
-      ]
-    };
+  computed: {
+    products() {
+      return this.$store.getters.getAllProducts;
+    }
   },
-
   methods: {
     editProduct(product) {
       product.editMode = true;
@@ -108,11 +73,11 @@ export default {
       }
     },
     deleteProduct(product) {
-      const index = this.products.indexOf(product);
-      if (index !== -1) {
-        this.products.splice(index, 1);
-      }
+      this.$store.dispatch('deleteProduct', product.id);
     }
+  },
+  mounted() {
+    // You can dispatch an action here to fetch products from an API if needed
   }
 };
 </script>

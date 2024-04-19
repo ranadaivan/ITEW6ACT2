@@ -17,8 +17,6 @@
 </template>
 
 <script>
-import Swal from 'sweetalert2';
-
 export default {
   data() {
     return {
@@ -29,25 +27,16 @@ export default {
   },
   methods: {
     addProduct() {
-      // Price Validation
-      if (parseFloat(this.price) <= 0) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Invalid Input Error',
-          text: 'Price cannot be negative or zero.',
-        });
-        return;
-      }
-
       // Create a new product object
       const newProduct = {
+        id: Math.random().toString(36).substr(2, 9), // Generate a random id for the new product
         name: this.name,
         description: this.description,
         price: parseInt(this.price)
       };
 
-      // Emit an event to notify the parent component about the new product
-      this.$emit('product-added', newProduct);
+      // Dispatch action to add the new product to Vuex store
+      this.$store.dispatch('addProduct', newProduct);
 
       // Show notification
       this.showNotification();
@@ -56,11 +45,7 @@ export default {
       this.clearFields();
     },
     showNotification() {
-      Swal.fire({
-        icon: 'success',
-        title: 'Product Added',
-        text: 'Your product has been successfully added.',
-      });
+      // Your notification logic
     },
     clearFields() {
       this.name = '';

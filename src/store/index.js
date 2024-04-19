@@ -2,7 +2,26 @@ import { createStore } from 'vuex';
 
 const store = createStore({
   state: {
-    products: []
+    products: [
+      {
+        id: '1',
+        name: 'Mechanical Keyboard',
+        description: 'Brand New',
+        price: 3000
+      },
+      {
+        id: '2',
+        name: 'Bluetooth Speaker',
+        description: 'Color green, brand new',
+        price: 8500
+      },
+      {
+        id: '3',
+        name: 'Refrigerator',
+        description: 'Color white, LG, second hand',
+        price: 10000
+      }
+    ]
   },
   mutations: {
     addProduct(state, product) {
