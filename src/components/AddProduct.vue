@@ -10,6 +10,7 @@
     </div>
     <div class="form-group">
       <label for="price" class="label">Product Price</label>
+      <!-- min="0" to html template input tag in order to natively reject inputs below 0 -->
       <input type="number" v-model.number="price" placeholder="Enter product price" required min="0" class="input">
     </div>
     <button type="submit" class="button">Add Product</button>
