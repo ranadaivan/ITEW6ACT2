@@ -82,24 +82,24 @@ export default {
   background-color: #f0f0f0;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary {
-  background-color: #ff6b6b; /* Vibrant red */
+  background-color: #ff6b6b;
   border-color: #ff6b6b;
   font-size: 18px;
   transition: transform 0.2s ease-in-out;
 }
 
 .btn-primary:hover {
-  background-color: #ff3e3e; /* Darker red on hover */
+  background-color: #ff3e3e;
   border-color: #ff3e3e;
-  transform: scale(1.05); /* Scale up on hover */
+  transform: scale(1.05);
 }
 
 .btn-primary:active {
-  background-color: #ff2626; /* Even darker red when active */
+  background-color: #ff2626;
   border-color: #ff2626;
 }
 
