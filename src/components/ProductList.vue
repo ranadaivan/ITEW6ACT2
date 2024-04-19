@@ -5,8 +5,8 @@
         <div class="product-header">
           <h3 class="product-name">{{ product.name }}</h3>
           <div>
-            <button @click="editProduct(product)" class="edit-button">✎ Edit</button>
-            <button @click="deleteProduct(product)" class="delete-button">🗑️ Delete</button>
+            <button @click="editProduct(product)" class="btn btn-warning btn-sm">✎ Edit</button>
+            <button @click="deleteProduct(product)" class="btn btn-danger btn-sm">🗑️ Delete</button>
           </div>
         </div>
         <p class="product-description">{{ product.description }}</p>
@@ -15,19 +15,19 @@
         <form v-if="product.editMode" @submit.prevent="updateProduct(product)" class="update-form">
           <div class="form-group">
             <label for="edit-name">Product Name</label>
-            <input type="text" v-model="product.editedName" required class="input-field">
+            <input type="text" v-model="product.editedName" required class="form-control">
           </div>
           <div class="form-group">
             <label for="edit-description">Product Description</label>
-            <input type="text" v-model="product.editedDescription" required class="input-field">
+            <input type="text" v-model="product.editedDescription" required class="form-control">
           </div>
           <div class="form-group">
             <label for="edit-price">Product Price</label>
-            <input type="number" v-model.number="product.editedPrice" required min="0" class="input-field">
+            <input type="number" v-model.number="product.editedPrice" required min="0" class="form-control">
           </div>
           <div class="buttons-container">
-            <button type="submit" class="submit-button">Update</button>
-            <button type="button" @click="cancelEdit(product)" class="cancel-button">Cancel</button>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="button" @click="cancelEdit(product)" class="btn btn-secondary">Cancel</button>
           </div>
         </form>
       </div>
@@ -72,8 +72,11 @@ export default {
 </script>
 
 <style>
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .container {
-  background: linear-gradient(to bottom right, #ffecd2, #ffbf69);
   padding: 20px;
 }
 
@@ -94,7 +97,7 @@ export default {
 .product-name {
   font-size: 20px;
   font-weight: bold;
-  color: #ff3d00;
+  color: #333;
 }
 
 .product-description {
@@ -113,32 +116,9 @@ export default {
   justify-content: flex-start;
 }
 
-.edit-button,
-.submit-button,
-.cancel-button,
-.delete-button {
-  padding: 10px 16px;
-  background-color: #ff6f00;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.btn {
   margin-right: 10px;
   font-weight: bold;
   font-size: 14px;
-}
-
-.edit-button:hover,
-.submit-button:hover,
-.cancel-button:hover,
-.delete-button:hover {
-  background-color: #ff9933;
-}
-
-.edit-button:active,
-.submit-button:active,
-.cancel-button:active,
-.delete-button:active {
-  background-color: #ff3d00;
 }
 </style>

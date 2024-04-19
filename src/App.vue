@@ -2,8 +2,14 @@
   <div id="app">
     <header class="title">Product Management</header>
     <div class="container">
-      <router-link to="/add-product" class="router-link">➕ Add New Product</router-link>
-      <router-link to="/product-list" class="router-link">📦 View Product List</router-link>
+      <div class="row">
+        <div class="col-md-6 mb-2">
+          <router-link to="/add-product" class="btn btn-success btn-lg btn-block">➕ Add New Product</router-link>
+        </div>
+        <div class="col-md-6 mb-2">
+          <router-link to="/product-list" class="btn btn-primary btn-lg btn-block">📦 View Product List</router-link>
+        </div>
+      </div>
       <router-view></router-view>
     </div>
   </div>
@@ -26,32 +32,30 @@ export default {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: #f8f9fa;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .title {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #333;
+  color: #555;
   display: block;
 }
 
-.router-link {
-  display: inline-block;
-  margin: 20px;
-  padding: 12px 24px;
-  border-radius: 8px;
-  background: linear-gradient(to right, #33cc33, #009900);
-  color: #fff;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: background 0.3s, color 0.3s;
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
 }
 
-.router-link:hover {
-  background: linear-gradient(to right, #009900, #006600);
-  color: #fff;
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-success:hover,
+.btn-primary:hover {
+  filter: brightness(90%);
 }
 </style>
