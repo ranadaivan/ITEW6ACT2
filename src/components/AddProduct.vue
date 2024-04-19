@@ -1,18 +1,18 @@
 <template>
   <form class="product-form" @submit.prevent="addProduct">
-    <div class="form-group">
+    <div class="form-group mb-4">
       <label for="name" class="label">Product Name</label>
-      <input type="text" v-model="name" id="name" placeholder="Enter product name" required class="input">
+      <input type="text" v-model="name" id="name" placeholder="Enter product name" required class="form-control">
     </div>
-    <div class="form-group">
+    <div class="form-group mb-4">
       <label for="description" class="label">Product Description</label>
-      <input type="text" v-model="description" id="description" placeholder="Enter product description" required class="input">
+      <input type="text" v-model="description" id="description" placeholder="Enter product description" required class="form-control">
     </div>
-    <div class="form-group">
+    <div class="form-group mb-4">
       <label for="price" class="label">Product Price</label>
-      <input type="number" v-model.number="price" placeholder="Enter product price" required min="0" class="input">
+      <input type="number" v-model.number="price" placeholder="Enter product price" required min="0" class="form-control">
     </div>
-    <button type="submit" class="button">Add Product</button>
+    <button type="submit" class="btn btn-primary btn-block">Add Product</button>
   </form>
 </template>
 
@@ -63,53 +63,36 @@ export default {
 </script>
 
 <style>
-.product-form {
-  background: linear-gradient(to right, #ffdaab, #ff9e4d);
-  border-radius: 20px;
-  padding: 40px;
-  max-width: 400px;
-  margin: 0 auto;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-.form-group {
-  margin-bottom: 40px;
-}
-
 .label {
   font-weight: bold;
-  font-size: 20px;
-  color: #ff5722;
-  margin-bottom: 16px;
 }
 
 .input {
-  width: calc(100% - 30px);
+  margin-bottom: 20px;
+}
+
+.product-form {
+  background-color: #f0f0f0;
   padding: 20px;
-  border: 2px solid #ff5722;
-  border-radius: 12px;
-  box-sizing: border-box;
-  color: #ff9800;
-  font-size: 18px;
+  border-radius: 10px;
 }
 
-.button {
-  width: 100%;
-  padding: 22px;
-  background: linear-gradient(to right, #ffffff, #ff9800);
-  color: #ff5722;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 20px;
-  transition: background-color 0.3s;
+.btn-primary {
+  background-color: #6c757d;
+  border-color: #6c757d;
 }
 
-.button:hover {
-  background: linear-gradient(to right, #ffffff, #ffa726);
+.btn-primary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
 }
 
-.button:active {
-  background: linear-gradient(to right, #ffffff, #ff5722);
+.btn-primary:active {
+  background-color: #454d55;
+  border-color: #3e444b;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
 }
 </style>

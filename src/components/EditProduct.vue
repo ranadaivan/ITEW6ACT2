@@ -2,17 +2,20 @@
   <form class="update-form" @submit.prevent="updateProduct">
     <div class="form-group">
       <label for="name" class="label">Product Name</label>
-      <input type="text" v-model="editedProduct.name" required class="input-field">
+      <input type="text" v-model="editedProduct.name" required class="form-control">
     </div>
     <div class="form-group">
       <label for="description" class="label">Product Description</label>
-      <input type="text" v-model="editedProduct.description" required class="input-field">
+      <input type="text" v-model="editedProduct.description" required class="form-control">
     </div>
     <div class="form-group">
       <label for="price" class="label">Product Price</label>
-      <input type="number" v-model.number="editedProduct.price" required class="input-field">
+      <input type="number" v-model.number="editedProduct.price" required class="form-control">
     </div>
-    <button type="submit" class="submit-button">Update Product</button>
+    <div class="buttons-container">
+      <button type="submit" class="btn btn-primary">Update Product</button>
+      <button type="button" @click="cancelEdit" class="btn btn-secondary">Cancel</button>
+    </div>
   </form>
 </template>
 
@@ -28,50 +31,79 @@ export default {
     updateProduct() {
       // Emit an event to notify the parent component to update the product
       this.$emit('update-product', this.editedProduct);
+    },
+    cancelEdit() {
+      // Emit an event to notify the parent component to cancel editing
+      this.$emit('cancel-edit');
     }
   }
 }
 </script>
 
 <style>
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .update-form {
   max-width: 400px;
   margin: 0 auto;
-  background-color: #ffecd2;
+  background-color: #ffffff;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .label {
-  display: block;
   font-weight: bold;
-  color: #ff3d00;
+  color: #333;
 }
 
-.input-field {
-  width: 100%;
+.form-control {
   padding: 10px;
-  border: 1px solid #ff6f00;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
 }
 
-.submit-button {
-  width: 100%;
+.btn-primary {
   padding: 12px;
-  background: linear-gradient(to right, #ffffff, #ff6f00);
+  background-color: #333;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
+  color: #fff;
 }
 
-.submit-button:hover {
-  background: linear-gradient(to right, #ffffff, #ff9500);
+.btn-primary:hover {
+  background-color: #666;
 }
 
-.submit-button:active {
-  background: linear-gradient(to right, #ffffff, #ff3d00);
+.btn-primary:active {
+  background-color: #000;
+}
+
+.btn-secondary {
+  padding: 12px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background-color: #aaa;
+}
+
+.btn-secondary:active {
+  background-color: #999;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
 }
 </style>
