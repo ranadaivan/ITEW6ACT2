@@ -5,29 +5,29 @@
         <div class="product-header">
           <h3 class="product-name">{{ product.name }}</h3>
           <div>
-            <button @click="editProduct(product)" class="btn btn-warning btn-sm">✎ Edit</button>
-            <button @click="deleteProduct(product)" class="btn btn-danger btn-sm">🗑️ Delete</button>
+            <button @click="editProduct(product)" class="edit-button">✎ Edit</button>
+            <button @click="confirmDelete(product)" class="delete-button">🗑️ Delete</button>
           </div>
         </div>
         <p class="product-description">{{ product.description }}</p>
         <p class="product-price">{{ product.price }}</p>
         <!-- Edit form for each product -->
-        <form v-if="product.editMode" @submit.prevent="updateProduct(product)" class="update-form">
+        <form v-if="product.editMode" @submit.prevent="confirmUpdate(product)" class="update-form">
           <div class="form-group">
             <label for="edit-name">Product Name</label>
-            <input type="text" v-model="product.editedName" required class="form-control">
+            <input type="text" v-model="product.editedName" required class="input-field">
           </div>
           <div class="form-group">
             <label for="edit-description">Product Description</label>
-            <input type="text" v-model="product.editedDescription" required class="form-control">
+            <input type="text" v-model="product.editedDescription" required class="input-field">
           </div>
           <div class="form-group">
             <label for="edit-price">Product Price</label>
-            <input type="number" v-model.number="product.editedPrice" required min="0" class="form-control">
+            <input type="number" v-model.number="product.editedPrice" required min="0" class="input-field">
           </div>
           <div class="buttons-container">
-            <button type="submit" class="btn btn-primary">Update</button>
-            <button type="button" @click="cancelEdit(product)" class="btn btn-secondary">Cancel</button>
+            <button type="submit" class="submit-button">Update</button>
+            <button type="button" @click="cancelEdit(product)" class="cancel-button">Cancel</button>
           </div>
         </form>
       </div>
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
+
 export default {
   computed: {
     products() {
@@ -52,6 +54,26 @@ export default {
       product.editedDescription = product.description;
       product.editedPrice = product.price;
     },
+    confirmUpdate(product) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, update it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.updateProduct(product);
+          Swal.fire(
+            'Updated!',
+            'Your product has been updated.',
+            'success'
+          )
+        }
+      });
+    },
     updateProduct(product) {
       product.name = product.editedName;
       product.description = product.editedDescription;
@@ -59,10 +81,27 @@ export default {
       product.editMode = false;
     },
     cancelEdit(product) {
-      product.editedName = '';
-      product.editedDescription = '';
-      product.editedPrice = 0;
       product.editMode = false;
+    },
+    confirmDelete(product) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.deleteProduct(product);
+          Swal.fire(
+            'Deleted!',
+            'Your product has been deleted.',
+            'success'
+          )
+        }
+      });
     },
     deleteProduct(product) {
       this.$store.dispatch('deleteProduct', product.id);
@@ -70,6 +109,7 @@ export default {
   }
 };
 </script>
+
 
 <style>
 body {
