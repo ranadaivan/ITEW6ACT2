@@ -23,7 +23,7 @@
           </div>
           <div class="form-group">
             <label for="edit-price">Product Price</label>
-            <input type="number" v-model.number="product.editedPrice" required class="input-field">
+            <input type="number" v-model.number="product.editedPrice" required min="0" class="input-field">
           </div>
           <div class="buttons-container">
             <button type="submit" class="submit-button">Update</button>
